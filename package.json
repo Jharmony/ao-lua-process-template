@@ -3,13 +3,13 @@
   "scripts": {
     "module:build": "cd src && ao build && cd .. && yarn module:load",
     "module:publish": "cd src && ao publish process.wasm -w ../tools/key.json --tag=\"Memory-Limit\" --value=\"1-gb\" --tag=\"Compute-Limit\" --value=\"9000000000000\" && cd ..",
-    "module:load": "NODE_OPTIONS=\"--import=./register.js \" node tools/load-module.ts",
-    "module:spawn": "NODE_OPTIONS=\"--import=./register.js \" node tools/spawn-module.ts",
-    "aos:build": "NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts",
-    "aos:publish": "NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts && node tools/publish-aos.ts",
-    "aos:load": "NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts && node tools/load-aos.ts",
-    "aos:spawn": "NODE_OPTIONS=\"--import=./register.js \" node tools/spawn-aos.ts",
-    "test": "NODE_OPTIONS=\"--import=./register.js \" node --test-concurrency 1 --experimental-wasm-memory64 **/*.test.ts"
+    "module:load": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/load-module.ts",
+    "module:spawn": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/spawn-module.ts",
+    "aos:build": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts",
+    "aos:publish": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts && node tools/publish-aos.ts",
+    "aos:load": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts && node tools/load-aos.ts",
+    "aos:spawn": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/spawn-aos.ts",
+    "test": "cross-env NODE_OPTIONS=\"--import=./register.js \" node --test-concurrency 1 --experimental-wasm-memory64 **/*.test.ts"
   },
   "devDependencies": {
     "@permaweb/ao-loader": "^0.0.35",
