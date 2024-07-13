@@ -1,7 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { bundle } from './lua-bundler.ts';
+import { fileURLToPath } from 'url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 async function main() {
   console.log('Bundling Lua...');
   const pathToLua = path.join(__dirname, '../src/aos.lua');
